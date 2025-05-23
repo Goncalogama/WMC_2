@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+  <div id="bg1" class="bg-section">
+    Welcome to Hidden Slovenia
+  </div>
+
+  <section class="content" id="intro">
+    <h2>The Story</h2>
+    <p>Explore Slovenia's hidden beauty — from quiet valleys and traditional villages to ancient caves and untouched trails. It connects nature, history, and cultural preservation.</p>
+  </section>
+
+  <div id="bg2" class="bg-section">
+    Valleys & Villages
+  </div>
+
   <header class="bg-dark text-white text-center py-4">
     <h1>Hidden Slovenia</h1>
     <p>Nature, Culture, and the Road Less Traveled</p>
@@ -27,27 +40,49 @@
     <section id="intro">
       <h2>Discover Slovenia's Hidden Treasures</h2>
       <p>From remote valleys to untold traditions, this multimedia story takes you beyond the tourist map...</p>
+      <h3>Main Message:</h3>
+      <p>“Slovenia’s quiet places deserve attention — they hold stories, traditions, and natural beauty that go unnoticed.”</p>
+      
+      <h3>Target Audience:</h3>
+      <p>Young travelers, nature lovers, Erasmus students, digital nomads, and cultural enthusiasts.</p>
     </section>
 
-    <section id="gallery">
-      <h2>Photo Gallery</h2>
-      <!-- image grid coming soon -->
+    <section class="content" id="text">
+      <h2>Meet the Locals: Interview with a Shepherd in Jezersko</h2>
+      <p>“My family has lived here for five generations. We take care of the trails and the sheep — and welcome hikers from across Europe…”</p>
+      <p>This short interview offers a glimpse into rural Slovenian life — traditions, challenges, and pride.</p>
     </section>
 
-    <section id="map">
-      <h2>Interactive Map</h2>
-      <!-- Leaflet.js map here -->
+    <section class="content" id="gallery">
+      <h2>Gallery of Hidden Spots</h2>
+      <img src="media/images/slovenia2.jpg" alt="Logar Valley" style="width: 100%; max-width: 600px;" />
+      <p>Logar Valley – A lesser-known alpine treasure tucked away in the Kamnik-Savinja Alps.</p>
     </section>
 
-    <section id="video">
-      <h2>Video Feature</h2>
-      <!-- embedded video or HTML5 video tag -->
+    <section class="content" id="video">
+      <h2>Discover More in Motion</h2>
+      <video width="100%" controls>
+        <source src="media/videos/slovenia.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </section>
 
-    <section id="poll">
-      <h2>Your Favorite Region?</h2>
-      <!-- interactive poll coming soon -->
+
+    <section class="content" id="poll">
+      <h2>Your Voice: Which Region Would You Explore?</h2>
+      <form onsubmit="alert('Thanks for voting!'); return false;">
+        <input type="radio" name="region" value="Alps" /> Julian Alps<br/>
+        <input type="radio" name="region" value="Karst" /> Karst Plateau<br/>
+        <input type="radio" name="region" value="Pannonian" /> Pannonian Hills<br/><br/>
+        <button type="submit">Vote</button>
+      </form>
     </section>
+    
+    <section class="content" id="map">
+      <h2>Map of Hidden Places</h2>
+      <div id="mapContainer" style="height: 400px;"></div>
+    </section>
+
   </main>
 
   <footer class="bg-dark text-white text-center py-3">
