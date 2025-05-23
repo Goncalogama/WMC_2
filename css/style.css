@@ -46,6 +46,15 @@ section {
   z-index: 1;
 }
 
+.centered-overlay-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
 
 #bg1 {
   background-image: url('../media/images/Slovenia1.jpg');
