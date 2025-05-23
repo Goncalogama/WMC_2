@@ -97,16 +97,15 @@
       </video>
     </section>
 
-
-
     <section class="content" id="poll">
       <h2>Your Voice: Which Region Would You Explore?</h2>
-      <form onsubmit="alert('Thanks for voting!'); return false;">
-        <input type="radio" name="region" value="Alps" /> Julian Alps<br/>
-        <input type="radio" name="region" value="Karst" /> Karst Plateau<br/>
-        <input type="radio" name="region" value="Pannonian" /> Pannonian Hills<br/><br/>
+      <form id="poll-form" onsubmit="return handleVote();">
+        <input type="radio" name="region" value="Julian Alps" required> Julian Alps<br/>
+        <input type="radio" name="region" value="Karst Plateau"> Karst Plateau<br/>
+        <input type="radio" name="region" value="Pannonian Hills"> Pannonian Hills<br/><br/>
         <button type="submit">Vote</button>
       </form>
+      <div id="poll-results" style="display: none; margin-top: 20px;"></div>
     </section>
     
     <section class="content" id="map">
