@@ -60,6 +60,7 @@ section {
 }
 
 main {
+  position: relative;
   background-image: url('../media/images/Slovenia3.jpg');
   background-size: cover;
   background-position: center;
@@ -69,6 +70,7 @@ main {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+
 
 section.content {
   background-color: transparent;
