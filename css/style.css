@@ -125,3 +125,13 @@ footer {
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
+.video-medium {
+  width: 80%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
