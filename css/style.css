@@ -82,12 +82,14 @@ main::before {
   z-index: -1; /* <- push it behind content */
 }
 
-
-section.content {
-  background-color: transparent;
-}
-
 main > * {
   position: relative;
   z-index: 1;
+}
+
+section.content {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  padding: 40px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
