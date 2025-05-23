@@ -26,16 +26,15 @@ section {
 }
 
 #bg1 {
-  background-image: url('../media/images/slovenia1.jpg');
+  background-image: url('../media/images/Slovenia1.jpg');
 }
 #bg2 {
-  background-image: url('../media/images/slovenia2.jpg');
+  background-image: url('../media/images/Slovenia2.jpg');
 }
 #bg3 {
-  background-image: url('../media/images/slovenia3.jpg');
+  background-image: url('../media/images/Slovenia3.jpg');
 }
 
-/* REGULAR CONTENT SECTION */
 .content {
   background-color: #1e1e1e;
   color: white;
