@@ -135,3 +135,6 @@ footer {
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
+#mapContainer {
+  height: 400px;
+}
