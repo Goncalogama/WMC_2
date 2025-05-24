@@ -162,3 +162,22 @@ footer {
 #mapContainer {
   height: 400px;
 }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.emoji-marker {
+  font-size: 24px;
+  cursor: pointer;
+  transform-origin: center bottom;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.leaflet-marker-icon:hover .emoji-marker {
+  animation: pulse 0.6s ease-in-out;
+}
+
