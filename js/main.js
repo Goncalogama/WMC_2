@@ -80,3 +80,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.getElementById("poll-form");
+  if (form) {
+    form.addEventListener("submit", handleVote);
+  }
+
+
+  const map = L.map('mapContainer').setView([46.1512, 14.9955], 8);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+
+  const locations = [
+    { name: "Jezersko", coords: [46.383, 14.497] },
+    { name: "Luče", coords: [46.350, 14.750] },
+    { name: "Drežnica", coords: [46.240, 13.567] },
+    { name: "Logar Valley", coords: [46.370, 14.630] },
+    { name: "Soča Valley", coords: [46.250, 13.750] },
+    { name: "Julian Alps", coords: [46.35, 13.83] },
+    { name: "Karst Plateau", coords: [45.73, 13.90] },
+    { name: "Pannonian Hills", coords: [46.55, 16.15] }
+  ];
+
+  locations.forEach(loc => {
+    L.marker(loc.coords).addTo(map).bindPopup(`<strong>${loc.name}</strong>`);
+  });
+});
