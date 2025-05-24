@@ -135,6 +135,26 @@ footer {
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gallery-thumb {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+
 #mapContainer {
   height: 400px;
 }
