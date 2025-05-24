@@ -59,9 +59,12 @@ function handleVote(event) {
   
   const { fact, url } = facts[selected];
   
-  html += `
-    <p style="margin-top: 20px;"><strong>Did you know?</strong> ${fact}</p>
-    <a href="${url}" target="_blank" style="color: #47c; font-weight: bold;">Explore more about ${selected}</a>
+   html += `
+    </ul>
+    <div style="margin-top: 30px; padding: 15px; background-color: rgba(0,0,0,0.6); border-radius: 10px;">
+      <p><strong>Did you know?</strong> ${fact}</p>
+      <a href="${url}" target="_blank" style="color: #80c8ff; font-weight: bold;">Explore more about ${selected}</a>
+    </div>
   `;
 
 
