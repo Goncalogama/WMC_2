@@ -80,6 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("poll-form");
+  if (form) {
+    form.addEventListener("submit", handleVote);
+  }
+
 
 // Initialize Leaflet map
   const map = L.map('mapContainer').setView([46.1512, 14.9955], 8);
