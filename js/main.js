@@ -13,17 +13,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-function handleVote() {
+function handleVote(event) {
+  event.preventDefault(); // ⛔️ Stop form from reloading the page
+
   const choices = {
-    "Julian Alps": Math.floor(Math.random() * 40) + 30,  // 30–70%
-    "Karst Plateau": Math.floor(Math.random() * 30) + 10, // 10–40%
+    "Julian Alps": Math.floor(Math.random() * 40) + 30,
+    "Karst Plateau": Math.floor(Math.random() * 30) + 10,
     "Pannonian Hills": Math.floor(Math.random() * 30) + 10
   };
 
   const selected = document.querySelector('input[name="region"]:checked').value;
   const total = choices["Julian Alps"] + choices["Karst Plateau"] + choices["Pannonian Hills"];
-  
-  // Normalize percentages to 100
+
   const normalized = Object.fromEntries(
     Object.entries(choices).map(([k, v]) => [k, Math.round((v / total) * 100)])
   );
@@ -45,6 +46,6 @@ function handleVote() {
   document.getElementById("poll-results").style.display = "block";
   document.getElementById("poll-form").style.display = "none";
 
-  return false; // prevent form submit
+  return false;
 }
 
