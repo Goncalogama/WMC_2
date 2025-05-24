@@ -45,7 +45,12 @@ function handleVote(event) {
   document.getElementById("poll-results").innerHTML = html;
   document.getElementById("poll-results").style.display = "block";
   document.getElementById("poll-form").style.display = "none";
-
-  return false;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("poll-form");
+  if (form) {
+    form.addEventListener("submit", handleVote);
+  }
+});
 
