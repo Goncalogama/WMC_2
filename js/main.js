@@ -80,33 +80,48 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
 
-  const form = document.getElementById("poll-form");
-  if (form) {
-    form.addEventListener("submit", handleVote);
-  }
-
-
+// Initialize Leaflet map
   const map = L.map('mapContainer').setView([46.1512, 14.9955], 8);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+  // Custom tile style (light theme)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a> contributors'
   }).addTo(map);
 
+  // Custom icons
+  const regionIcon = L.icon({
+    iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon-2x-blue.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    shadowSize: [41, 41]
+  });
+
+  const villageIcon = L.icon({
+    iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon-2x-green.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    shadowSize: [41, 41]
+  });
 
   const locations = [
-    { name: "Jezersko", coords: [46.383, 14.497] },
-    { name: "Luče", coords: [46.350, 14.750] },
-    { name: "Drežnica", coords: [46.240, 13.567] },
-    { name: "Logar Valley", coords: [46.370, 14.630] },
-    { name: "Soča Valley", coords: [46.250, 13.750] },
-    { name: "Julian Alps", coords: [46.35, 13.83] },
-    { name: "Karst Plateau", coords: [45.73, 13.90] },
-    { name: "Pannonian Hills", coords: [46.55, 16.15] }
+    { name: "Jezersko", coords: [46.383, 14.497], type: "village" },
+    { name: "Luče", coords: [46.350, 14.750], type: "village" },
+    { name: "Drežnica", coords: [46.240, 13.567], type: "village" },
+    { name: "Logar Valley", coords: [46.370, 14.630], type: "village" },
+    { name: "Soča Valley", coords: [46.250, 13.750], type: "village" },
+    { name: "Julian Alps", coords: [46.35, 13.83], type: "region" },
+    { name: "Karst Plateau", coords: [45.73, 13.90], type: "region" },
+    { name: "Pannonian Hills", coords: [46.55, 16.15], type: "region" }
   ];
 
   locations.forEach(loc => {
-    L.marker(loc.coords).addTo(map).bindPopup(`<strong>${loc.name}</strong>`);
+    const icon = loc.type === "region" ? regionIcon : villageIcon;
+    L.marker(loc.coords, { icon }).addTo(map)
+      .bindPopup(`<strong>${loc.name}</strong>`);
   });
 });
