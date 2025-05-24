@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .bindPopup(`<strong>${loc.name}</strong><br>${loc.fact}`);
 
     marker.on('mouseover', function () {
-      this._icon.style.transform = "translateY(-5px) scale(1.2)";
-      this._icon.style.transition = "0.2s ease";
+      this._icon.style.transition = "transform 0.2s ease";
+      this._icon.style.transform = "scale(1.2)";
     });
     marker.on('mouseout', function () {
-      this._icon.style.transform = "translateY(0) scale(1)";
+      this._icon.style.transform = "scale(1)";
     });
   });
 });
