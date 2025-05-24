@@ -12,19 +12,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 function createEmojiIcon(emoji) {
   return L.divIcon({
-    html: `
-      <div class="emoji-marker" style="
-        font-size: 24px;
-        cursor: pointer;
-        transform-origin: center bottom;
-        will-change: transform;
-      ">${emoji}</div>`,
-    className: '', // Prevent default Leaflet icon styling
+    html: `<div class="emoji-marker">${emoji}</div>`,
+    className: '',
     iconSize: [30, 30],
-    iconAnchor: [15, 30] // Keeps it pinned to the bottom
+    iconAnchor: [15, 30]
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   // ==============================
