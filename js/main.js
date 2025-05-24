@@ -10,15 +10,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Region/village icon factory
+function createEmojiIcon(emoji) {
+  return L.divIcon({
+    html: `<div style="font-size: 24px; cursor: pointer;">${emoji}</div>`,
+    className: '',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30]
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // ==============================
   // POLL FUNCTIONALITY
   // ==============================
-
   const form = document.getElementById("poll-form");
   if (form) {
     form.addEventListener("submit", function (event) {
-      event.preventDefault(); // ⛔️ Prevent page reload
+      event.preventDefault(); // Prevent page reload
 
       const choices = {
         "Julian Alps": Math.floor(Math.random() * 40) + 30,
@@ -78,45 +87,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // ==============================
   // LEAFLET MAP
   // ==============================
-
   const map = L.map('mapContainer').setView([46.1512, 14.9955], 8);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a> contributors'
   }).addTo(map);
 
-  const regionIcon = L.icon({
-    iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon-2x-blue.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    shadowSize: [41, 41]
-  });
-
-  const villageIcon = L.icon({
-    iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon-2x-green.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    shadowSize: [41, 41]
-  });
-
   const locations = [
-    { name: "Jezersko", coords: [46.383, 14.497], type: "village" },
-    { name: "Luče", coords: [46.350, 14.750], type: "village" },
-    { name: "Drežnica", coords: [46.240, 13.567], type: "village" },
-    { name: "Logar Valley", coords: [46.370, 14.630], type: "village" },
-    { name: "Soča Valley", coords: [46.250, 13.750], type: "village" },
-    { name: "Julian Alps", coords: [46.35, 13.83], type: "region" },
-    { name: "Karst Plateau", coords: [45.73, 13.90], type: "region" },
-    { name: "Pannonian Hills", coords: [46.55, 16.15], type: "region" }
+    { name: "Jezersko", coords: [46.383, 14.497], icon: "🏡", fact: "A serene alpine village known for its cheese and hiking." },
+    { name: "Luče", coords: [46.350, 14.750], icon: "🏡", fact: "Famous for traditional linen weaving and mountain festivals." },
+    { name: "Drežnica", coords: [46.240, 13.567], icon: "🏡", fact: "A Karst village steeped in WWI history and folklore." },
+    { name: "Logar Valley", coords: [46.370, 14.630], icon: "🏡", fact: "An iconic glacial valley with waterfalls and eco-tourism." },
+    { name: "Soča Valley", coords: [46.250, 13.750], icon: "🏡", fact: "Home to emerald rivers, WWI trails, and adrenaline sports." },
+    { name: "Julian Alps", coords: [46.35, 13.83], icon: "🏔️", fact: "Slovenia's alpine crown, with Mount Triglav at the center." },
+    { name: "Karst Plateau", coords: [45.73, 13.90], icon: "🧀", fact: "Caves, dry stone walls, prosciutto, and Teran wine." },
+    { name: "Pannonian Hills", coords: [46.55, 16.15], icon: "🍇", fact: "Rolling vineyards, thermal spas, and peaceful countryside." }
   ];
 
   locations.forEach(loc => {
-    const icon = loc.type === "region" ? regionIcon : villageIcon;
-    L.marker(loc.coords, { icon }).addTo(map)
-      .bindPopup(`<strong>${loc.name}</strong>`);
+    const icon = createEmojiIcon(loc.icon);
+    const marker = L.marker(loc.coords, { icon }).addTo(map)
+      .bindPopup(`<strong>${loc.name}</strong><br>${loc.fact}`);
+
+    marker.on('mouseover', function () {
+      this._icon.style.transform = "translateY(-5px) scale(1.2)";
+      this._icon.style.transition = "0.2s ease";
+    });
+    marker.on('mouseout', function () {
+      this._icon.style.transform = "translateY(0) scale(1)";
+    });
   });
 });
