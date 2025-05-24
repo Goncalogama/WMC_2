@@ -42,6 +42,29 @@ function handleVote(event) {
   }
   html += `</ul>`;
 
+  const facts = {
+    "Julian Alps": {
+      fact: "Home to Triglav National Park, Slovenia’s highest peak, and pristine alpine lakes.",
+      url: "https://www.slovenia.info/en/places-to-go/the-julian-alps"
+    },
+    "Karst Plateau": {
+      fact: "The Karst gave its name to karst geology — with caves, sinkholes, and local prosciutto.",
+      url: "https://www.slovenia.info/en/places-to-go/regions/mediterranean-karst-slovenia/karst"
+    },
+    "Pannonian Hills": {
+      fact: "A land of vineyards, thermal spas, and peaceful countryside.",
+      url: "https://slovenia-outdoor.com/en/destinations/thermal-pannonian-slovenia/"
+    }
+  };
+  
+  const { fact, url } = facts[selected];
+  
+  html += `
+    <p style="margin-top: 20px;"><strong>Did you know?</strong> ${fact}</p>
+    <a href="${url}" target="_blank" style="color: #47c; font-weight: bold;">Explore more about ${selected}</a>
+  `;
+
+
   document.getElementById("poll-results").innerHTML = html;
   document.getElementById("poll-results").style.display = "block";
   document.getElementById("poll-form").style.display = "none";
